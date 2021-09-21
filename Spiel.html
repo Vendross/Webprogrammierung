@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kniffel</title>
+    <link rel="stylesheet" href="C:/Users/eugen/source/versuch 2/styles.css" />
+</head>
+<body>
+    <!--Naviagtionsleiste oben-->
+    <div class="navbar">
+        <a href="C:/Users/eugen/source/versuch 2/Index.html">Startseite</a>
+        <a  class="active" href="C:/Users/eugen/source/versuch 2/Spiel.html">Spiel</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Optionen
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="C:/Users/eugen/source/versuch 2/Optionen.html">Ranking</a>
+                <a href="C:/Users/eugen/source/versuch 2/Optionen.html">Regeln</a>
+            </div>
+        </div>
+        <a href="C:/Users/eugen/source/versuch 2/Impressum.html">Impressum</a>
+        <a href="C:/Users/eugen/source/versuch 2/Datenschutz.html">Datenschutz</a>
+    </div>
+
+
+    <h1>Auf dieser Seite wird das Spiel spielbar sein</h1>
+
+    <img id="Dice1" src="C:\Users\eugen\Downloads\1eyed.jpg" onclick="zink(this)">
+    <img id="Dice2" src="C:\Users\eugen\Downloads\1eyed.jpg" onclick="zink(this)">
+    <img id="Dice3" src="C:\Users\eugen\Downloads\1eyed.jpg" onclick="zink(this)">
+    <img id="Dice4" src="C:\Users\eugen\Downloads\1eyed.jpg" onclick="zink(this)">
+    <img id="Dice5" src="C:\Users\eugen\Downloads\1eyed.jpg" onclick="zink(this)">
+
+    <center><button id="würfle" onclick="rollDice5()"> Würfle </button></center>
+
+
+    <p id="ergebnis1">0</p>
+    <p id="ergebnis2">0</p>
+    <p id="ergebnis3">0</p>
+    <p id="ergebnis4">0</p>
+    <p id="ergebnis5">0</p>
+
+    <table id="rheihe">
+        <caption>Block</caption>
+        <tr>
+            <th>Kombi</th>
+            <th>Punktzahl</th>
+        </tr>
+        <tr>
+            <td>Einser</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Zweier</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Dreier</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Vierer</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fünfer</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sechser</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <hr />
+    <nav>
+        <ul>
+            <li aria-current="page"><a href="C:/Users/eugen/source/versuch 2/Index.html">Index</a></li>
+            <li><a href="C:/Users/eugen/source/versuch 2/Spiel.html">Spiel</a></li>
+            <li><a href="C:/Users/eugen/source/versuch 2/Optionen.html">Optionen</a></li>
+            <li><a href="C:/Users/eugen/source/versuch 2/Impressum.html">Impressum</a></li>
+            <li><a href="C:/Users/eugen/source/versuch 2/Datenschutz.html">Datenschutz</a></li>
+        </ul>
+    </nav>
+    <hr />
+
+    <script>
+
+        //Id der Wertfelder
+        const erg = ['ergebnis1', 'ergebnis2', 'ergebnis3', 'ergebnis4', 'ergebnis5'];
+
+        //Id der Würfel Bilder
+        const die = ['Dice1', 'Dice2', 'Dice3', 'Dice4', 'Dice5'];
+
+        var gewählteWürfel = ["0", "1", "2", "3", "4"];
+        var zähler = 0;
+
+
+        function rollDice() {
+            var x = 1 + Math.floor(Math.random() * 6);
+            return x;
+        }
+
+        function rollDice5() {
+            for (let i = 0; i < 5; i++) {
+                document.getElementById(erg[i]).innerHTML = rollDice();
+                diceSide(die[i], erg[i]);
+            }
+
+        }
+
+        function diceSide(Dice, Value) {
+            var z = document.getElementById(Value).innerHTML;
+            switch (z) {
+                case '1':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/1eyed.jpg";
+                    break;
+                case '2':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/2eyed.jpg";
+                    break;
+                case '3':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/3eyed.jpg";
+                    break;
+                case '4':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/4eyed.jpg";
+                    break;
+                case '5':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/5eyed.jpg";
+                    break;
+                case '6':
+                    document.getElementById(Dice).src = "C:/Users/eugen/Downloads/6eyed.jpg";
+                    break;
+
+            }
+
+        }
+
+        function zink(sender) {
+            document.getElementById(sender.id).src = "C:/Users/eugen/Downloads/6eyed.jpg";
+            var ind = die.indexOf(sender.id);
+            gewählteWürfel[zähler] = erg[ind];
+
+            document.getElementById(gewählteWürfel[zähler]).innerHTML = zähler;
+            zähler = zähler + 1;
+        }
+
+    </script>
+</body>
+
+</html>

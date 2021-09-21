@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kniffel-Startseite</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!--Naviagtionsleiste oben-->
+    <div class="navbar">
+        <a class="active" href="Index.html">Startseite</a>
+        <a href="Spiel.html">Spiel</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Optionen
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Optionen.html">Ranking</a>
+                <a href="Optionen.html">Regeln</a>
+            </div>
+        </div>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+    </div>
+
+    <!-- Logo-->
+    <center> <img id="Logo" src="Bilder/kniflle.jpg" width="210" height="200" title="Knifflelogo" alt="Thorbens Tolles Kniffellogo" /></center>
+
+    <!-- Headline-->
+    <center><h1>Kniffel, ein Klassiker neu aufgelegt</h1></center>
+
+    <!-- Button zur Spieleseite-->
+    <center>
+        <button id="play" onclick="window.location.href = 'Spiel.html';">Spiel starten</button>
+    </center>
+
+    <!-- Cookie -->
+    <div id="footer-cookie">
+        <span id="description">
+            Wir nutzen Cookies, um unsere Dienste zu erbringen und zu verbessern. Mit Nutzung dieser Seite akzeptieren Sie Cookies. <a href="Datenschutz.html">Mehr erfahren</a>
+        </span>
+        <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Akzeptieren</a></span>
+        <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Weitere Optionen</a></span>
+    </div>
+
+    <script>
+        /*
+          Dieses Skript zeigt das Cookiebanner an, wenn es noch nicht bestätigt wurde
+        */
+        var footerCookie = document.querySelector("#footer-cookie");
+        var footerCookieAccept = document.querySelector("#accept");
+
+        if (document.cookie.indexOf("dakitecCookieBanner=") == -1) {
+            footerCookie.style.display = "block";
+        }
+
+        footerCookieAccept.onclick = function (e) {
+            var cookieDate = new Date();
+            cookieDate.setTime(new Date().getTime() + 31104000000);
+
+            document.cookie = "dakitecCookieBanner = 1; path=/; secure; expires=" + cookieDate.toUTCString();
+
+            footerCookie.style.display = "none";
+        };
+
+    </script>
+
+</body>
+
+</html>
