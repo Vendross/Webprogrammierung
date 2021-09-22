@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Kniffel</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="StyleSheets/styles.css" />
 </head>
 <body>
     <!--Naviagtionsleiste oben-->
     <div class="navbar">
         <a href="Index.html">Startseite</a>
-        <a  class="active" href="Spiel.html">Spiel</a>
+        <a class="active" href="Spiel.html">Spiel</a>
         <div class="dropdown">
             <button class="dropbtn">
                 Optionen
@@ -29,23 +29,29 @@
     <h1>Auf dieser Seite wird das Spiel spielbar sein</h1>
 
     <!-- Würfel anzeige-->
-    <img id="Dice1" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
-    <img id="Dice2" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
-    <img id="Dice3" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
-    <img id="Dice4" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
-    <img id="Dice5" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+    <div class="Dices">
+        <img class="Dice" id="Dice1" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+        <img class="Dice" id="Dice2" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+        <img class="Dice" id="Dice3" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+        <img class="Dice" id="Dice4" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+        <img class="Dice" id="Dice5" src="Bilder/Würfelseiten/1eyed.jpg" onclick="zink(this)">
+    </div>
 
     <!-- Knopf zum Wüfeln-->
     <center><button id="würfle" onclick="rollDice5()"> Würfle </button></center>
 
-
+    <!--  wahrscheinlich nicht benötigt
     <p id="ergebnis1">0</p>
     <p id="ergebnis2">0</p>
     <p id="ergebnis3">0</p>
     <p id="ergebnis4">0</p>
     <p id="ergebnis5">0</p>
+        -->
 
-    <!-- block -->
+    <!-- Block, 
+        erstes td = name der kombi mit onclick funktion zum punkte berechenen
+        zweites td = speicher der Punkte 
+        -->
     <table id="rheihe">
         <caption>Block</caption>
         <tr>
@@ -53,37 +59,50 @@
             <th>Punktzahl</th>
         </tr>
         <tr>
-            <td>Einser</td>
-            <td></td>
+            <td onclick="obererBlock(1)">Einser</td>
+            <td id="einserPunkte" onclick="obererBlock(1)"></td>
         </tr>
         <tr>
-            <td>Zweier</td>
-            <td></td>
+            <td onclick="obererBlock(2)">Zweier</td>
+            <td id="zweierPunkte" onclick="obererBlock(2)"></td>
         </tr>
         <tr>
-            <td>Dreier</td>
-            <td></td>
+            <td onclick="obererBlock(3)">Dreier</td>
+            <td id="dreierPunkte" onclick="obererBlock(3)"></td>
         </tr>
         <tr>
-            <td>Vierer</td>
-            <td></td>
+            <td onclick="obererBlock(4)">Vierer</td>
+            <td id="viererPunkte" onclick="obererBlock(4)"></td>
         </tr>
         <tr>
-            <td>Fünfer</td>
-            <td></td>
+            <td onclick="obererBlock(5)">Fünfer</td>
+            <td id="fünferPunkte" onclick="obererBlock(5)"></td>
         </tr>
         <tr>
-            <td>Sechser</td>
-            <td></td>
+            <td onclick="obererBlock(6)">Sechser</td>
+            <td id="sechserPunkte" onclick="obererBlock(6)"></td>
+        </tr>
+        <tr>
+            <td>Summe oben</td>
+            <td id="summePunkte"></td>
+        </tr>
+        <tr>
+            <td>Bonus</td>
+            <td id="bonusPunkte"></td>
         </tr>
     </table>
 
-    
+
 
     <script>
 
         //Id der Wertfelder
         const erg = ['ergebnis1', 'ergebnis2', 'ergebnis3', 'ergebnis4', 'ergebnis5'];
+
+
+        var würfelWert = [1, 1, 1, 1, 1];
+
+        var punkteOben = [0,0,0,0,0,0,0]
 
         //Id der Würfel Bilder
         const die = ['Dice1', 'Dice2', 'Dice3', 'Dice4', 'Dice5'];
@@ -100,32 +119,34 @@
         // führt rollDice() 5 mal aus , speichert die ergebnisse, führt diceSide() aus
         function rollDice5() {
             for (let i = 0; i < 5; i++) {
-                document.getElementById(erg[i]).innerHTML = rollDice();
-                diceSide(die[i], erg[i]);
-            }
 
+                würfelWert[i] = rollDice();
+                diceSide(die[i], würfelWert[i]);
+                
+            }
+            
         }
 
         //kriegt würfel und wert, ändert würfelbild passend zum wert
         function diceSide(Dice, Value) {
-            var z = document.getElementById(Value).innerHTML;
-            switch (z) {
-                case '1':
+
+            switch (Value) {
+                case 1:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/1eyed.jpg";
                     break;
-                case '2':
+                case 2:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/2eyed.jpg";
                     break;
-                case '3':
+                case 3:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/3eyed.jpg";
                     break;
-                case '4':
+                case 4:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/4eyed.jpg";
                     break;
-                case '5':
+                case 5:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/5eyed.jpg";
                     break;
-                case '6':
+                case 6:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/6eyed.jpg";
                     break;
 
@@ -140,6 +161,65 @@
 
             document.getElementById(gewählteWürfel[zähler]).innerHTML = zähler;
             zähler = zähler + 1;
+        }
+
+        //methode kriegt einen wert, zählt alle würfel mit dem wert zusammen
+        //trägt diese dann in die richtige spalte ein
+        function obererBlock(Wert) {
+
+            var punkte = 0;
+
+            //zählt die Werte in würfelWert zu punkten zusammen
+            for (let i = 0; i < 5; i++) {
+                if (würfelWert[i] == Wert) {
+                    punkte = punkte + würfelWert[i];
+                }
+            }
+
+            //trägt abhängig vom Wert die punkte in eine Spalte ein
+            switch (Wert) {
+                case 1:
+                    tragePunkteEin("einserPunkte", punkte, Wert);
+                    break;
+                case 2:
+                    tragePunkteEin("zweierPunkte", punkte, Wert);
+                    break;
+                case 3:
+                    tragePunkteEin("dreierPunkte", punkte, Wert);
+                    break;
+                case 4:
+                    tragePunkteEin("viererPunkte", punkte, Wert);
+                    break;
+                case 5:
+                    tragePunkteEin("fünferPunkte", punkte, Wert);
+                    break;
+                case 6:
+                    tragePunkteEin("sechserPunkte", punkte, Wert);
+                    break;
+            }
+         
+        }
+
+        //methode kriegt eine id und punkte und trägt die punkte dann in die passende spalte ein
+        function tragePunkteEin(PunkteId, punkte, pIndex) {
+            document.getElementById(PunkteId).innerHTML = punkte;
+            punkteOben[pIndex - 1] = punkte;
+
+            summeBerechnen();
+            
+            if (punkteOben[7] >= 63) {
+                punkteOben[8] = 35;
+                document.getElementById("bonusPunkte").innerHTML = punkteOben[8];
+            }
+        }
+
+        function summeBerechnen() {
+            var punkteSumme = 0;
+            for (let i = 0; i < 6; i++) {
+                punkteSumme = punkteSumme + punkteOben[i];
+            }
+            punkteOben[7] = punkteSumme;
+            document.getElementById("summePunkte").innerHTML = punkteSumme;
         }
 
     </script>
