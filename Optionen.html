@@ -24,7 +24,16 @@
                 <a href="Regeln.html">Regeln</a>
             </div>
         </div>
-        <a href="Impressum.html">Impressum</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Kontakt
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Impressum.html">Impressum</a>
+                <a href="Kontakt.html">Kontaktformular</a>
+            </div>
+        </div>
         <a href="Datenschutz.html">Datenschutz</a>
         <!-- Button to open the modal login form -->
         <button class="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
@@ -32,19 +41,69 @@
 
     <!-- Headline -->
     <h1>Kniffel, ein Klassiker neu aufgelegt äöü </h1>
-
-    <!-- Text -->
-    <p> hier sollen Rankings einsehbar und Regeln nachschaubar sein äöü </p>
-
-    <!-- Ranking Tabelle-->
-    <table border="1">
-        <caption>Highscore</caption>
-        <tr>
-            <th>Name</th>
-            <th>Punktzahl</th>
-        </tr>
-    </table>
+   
+    <input type="file" name="test.txt" id="file">
+    <!--Ranking Liste-->
+    <div class="container">
+        <!--Überschrifft-->
+        <h2>Highscores<small>...</small></h2>
+        <ul class="responsive-table">
+            <!--Oberste Reihe-->
+            <li class="table-header">
+                <div class="col col-1">Platz</div>
+                <div class="col col-2">Spieler</div>
+                <div class="col col-3">Punktzahl</div>
+                <div class="col col-4">Datum</div>
+            </li>
+            <!--Die anderen Reihen-->
+            <li class="table-row">
+                <div class="col col-1" data-label="Job Id">1.</div>
+                <div class="col col-2" data-label="Customer Name">John Doe</div>
+                <div class="col col-3" data-label="Amount">63</div>
+                <div class="col col-4" data-label="Payment Status">06.10.2021</div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Job Id">42442</div>
+                <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
+                <div class="col col-3" data-label="Amount">$220</div>
+                <div class="col col-4" data-label="Payment Status">Pending</div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Job Id">42257</div>
+                <div class="col col-2" data-label="Customer Name">John Smith</div>
+                <div class="col col-3" data-label="Amount">$341</div>
+                <div class="col col-4" data-label="Payment Status">Pending</div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Job Id">42311</div>
+                <div class="col col-2" data-label="Customer Name">John Carpenter</div>
+                <div class="col col-3" data-label="Amount">$115</div>
+                <div class="col col-4" data-label="Payment Status">Pending</div>
+            </li>
+        </ul>
+    </div>
 
 </body>
 
+
 </html>
+
+<script>
+        document.getElementById('file').onchange = function () {
+
+            var file = this.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function (progressEvent) {
+                // Entire file
+                console.log(this.result);
+
+                // By lines
+                var lines = this.result.split('\n');
+                for (var line = 0; line < lines.length; line++) {
+                    console.log(lines[line]);
+                }
+            };
+            reader.readAsText(file);
+        };
+</script>

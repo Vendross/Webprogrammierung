@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="Bilder/kniflle.jpg">
 </head>
 <body>
 
@@ -27,7 +29,16 @@
                 <a href="Regeln.html">Regeln</a>
             </div>
         </div>
-        <a href="Impressum.html">Impressum</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Kontakt
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Impressum.html">Impressum</a>
+                <a href="Kontakt.html">Kontaktformular</a>
+            </div>
+        </div>
         <a href="Datenschutz.html">Datenschutz</a>
         <!-- Button to open the modal login form -->
         <button class="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
@@ -52,21 +63,21 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <button class="login2" type="submit">Login</button>
+                <button class="login2" type="submit" onclick="window.location.href = 'Profil.html';">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw"> <a href="Passwort.html"> Forgot password?</a></span>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Abrechen</button>
+                <span class="psw"> <a href="Passwort.html"> Passwort vergessen?</a></span>
             </div>
         </form>
     </div>
 
     <!-- Logo-->
-    <center> <img id="Logo" src="Bilder/kniflle.jpg" width="210" height="200" title="Knifflelogo" alt="Thorbens Tolles Kniffellogo" /></center>
+    <center> <img id="Logo" src="Bilder/kniflle.jpg" width="450" height="300" title="Knifflelogo" alt="Thorbens Tolles Kniffellogo" /></center>
 
     <!-- Headline-->
     <center><h1>Kniffel, ein Klassiker neu aufgelegt</h1></center>
@@ -84,6 +95,27 @@
         <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Akzeptieren</a></span>
         <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Weitere Optionen</a></span>
     </div>
+
+    <!--Fußzeile mit social media
+    <div id="footer">
+        <div class="connect">
+            <div>
+                <h1>Wir sind auch erreichbar unter</h1>
+                <div>
+                    <a href="" class="facebook">facebook(nichts eingetragen)</a>
+                    <a href="https://twitter.com/dhbw_ma_rz" class="twitter">twitter(nichts eingetragen)</a>
+                    <a href="" class="googleplus">googleplus(nichts eingetragen)</a>
+                    <a href="" class="pinterest">pinterest(nichts eingetragen)</a>
+                </div>
+            </div>
+        </div>
+        <div class="footnote">
+            <div>
+                <p>&copy; 2023 BY SPIELEAFFE GMBH &cong; KG | ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </div>
+        -->
 
     <script>
         /*

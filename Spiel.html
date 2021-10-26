@@ -24,7 +24,16 @@
                 <a href="Regeln.html">Regeln</a>
             </div>
         </div>
-        <a href="Impressum.html">Impressum</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Kontakt
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Impressum.html">Impressum</a>
+                <a href="Kontakt.html">Kontaktformular</a>
+            </div>
+        </div>
         <a href="Datenschutz.html">Datenschutz</a>
         <!-- Button to open the modal login form -->
         <button class="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
@@ -62,7 +71,7 @@
         <tr>
             <th>Kombi</th>
             <th>Spieler 1</th>
-            <!-- <th>Spieler 2</th>
+            <!--<th>Spieler 2</th>
             <th>Spieler 3</th>
             <th>Spieler 4</th>
              -->
@@ -177,14 +186,19 @@
         function rollDice5() {
             if (würfelzähler > 0) {
                 for (let i = 0; i < 5; i++) {
+                    //überprüft ob der würfel gewählt ist
                     if (würfelGewählt[i] == false) {
+                        //setzt in würfelWert an die richtige stelle eine zufallszahl
                         würfelWert[i] = rollDice();
+
                         diceSide(die[i], würfelWert[i]);
                     }
                     
 
                 }
+                //reduziert würfelzähler um 1(wie oft man noch würfeln kann)
                 würfelzähler = würfelzähler - 1;
+                //setzt punkte gesetzt auf false(die würfeln dürfen nur einmal als punkte eingetragen werden, dannach muss neu gewürfelt werden)
                 punkteGesetzt = false;
             }
             
@@ -195,7 +209,8 @@
         function diceSide(Dice, Value) {
 
             switch (Value) {
-                case 1:
+                //ändert das Bild das beu der Id Dice hinterlegt ist in abhängigkeit von value
+                case 1:                
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/1eyed.jpg";
                     break;
                 case 2:
@@ -218,27 +233,32 @@
 
         }
 
+        //macht den Würfel durchsichtiger und setzt ihn als gewählt, falls schon getan wird es rückgängig gemacht
         function auswählen(sender) {
+
+            //findet den index im array die des wertes der identisch ist zur Id des mitgegebenen Objekts
             var ind = die.indexOf(sender.id);
 
+            //wenn der würfel nicht gewählt ist
             if (würfelGewählt[ind] == false) {
 
-                
+                //macht ihn durchsichtiger
                 document.getElementById(sender.id).style.opacity = 0.5;
+                //wählt ihn
                 würfelGewählt[ind] = true;
+
+            //ansonnsten
             } else {
-                
+                //macht ihn wieder undurchsichtig
                 document.getElementById(sender.id).style.opacity = 1;
+                //entwählt ihn
                 würfelGewählt[ind] = false;
+
             }
             
             
 
-            
-            //gewählteWürfel[zähler] = erg[ind];
-
-           // document.getElementById(gewählteWürfel[zähler]).innerHTML = zähler;
-           // zähler = zähler + 1;
+  
         }
 
         function addiereBestimmteWürfel(Wert) {
@@ -346,14 +366,15 @@
                 }
             }
 
-            document.getElementById("fullhousePunkte").innerHTML = kombi[2];
-            document.getElementById("kleineStraßePunkte").innerHTML = kombi[3];
-            document.getElementById("großeStraßePunkte").innerHTML = kombi[4];
         }
 
+        // trägt die fullhouse punktzah ein
         function fullHouse() {
+            //variablen zum überprüfen
             var full = false;
             var house = false;
+
+            //würfel ergebnisse
             var kombi = kombination();
 
             for (let i = 0; i < 6; i++) {
