@@ -73,3 +73,20 @@
 .active {
 	background-color: dimgray;
 }
+
+/*login button in der navbar*/
+.login {
+	background-color: #333;
+	float: right;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	cursor: pointer;
+	border: 0;
+}
+
+login:hover {
+	opacity: 0.8;
+}

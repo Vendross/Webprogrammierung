@@ -6,6 +6,7 @@
     <title>Kniffel-Startseite</title>
     <link rel="stylesheet" href="StyleSheets/styles.css" />
     <link rel="stylesheet" href="StyleSheets/NavbarStyle.css" />
+    <link rel="stylesheet" href="StyleSheets/IndexSite.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,10 +83,27 @@
     <!-- Headline-->
     <center><h1>Kniffel, ein Klassiker neu aufgelegt</h1></center>
 
-    <!-- Button zur Spieleseite-->
     <center>
-        <button id="play" onclick="window.location.href = 'Spiel.html';">Spiel starten</button>
+        <button id="play" onclick="document.getElementById('id02').style.display='block'"> Spiel starten</button>
     </center>
+
+    <!-- The Modal -->
+    <div id="id02" class="modal">
+        <span onclick="document.getElementById('id02').style.display='none'"
+              class="close" title="Close Modal">&times;</span>
+
+        <button class="login2" onclick="window.location.href = 'Spiel.html';">1 Spieler </button>
+
+      
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Abrechen</button>
+
+            </div>
+    </div>
+
+
+
 
     <!-- Cookie -->
     <div id="footer-cookie">
@@ -116,10 +134,9 @@
         </div>
     </div>
         -->
-
     <script>
         /*
-          Dieses Skript zeigt das Cookiebanner an, wenn es noch nicht bestätigt wurde
+        Dieses Skript zeigt das Cookiebanner an, wenn es noch nicht bestätigt wurde
         */
         var footerCookie = document.querySelector("#footer-cookie");
         var footerCookieAccept = document.querySelector("#accept");

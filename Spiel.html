@@ -6,7 +6,7 @@
     <title>Kniffel</title>
     <link rel="stylesheet" href="StyleSheets/styles.css" />
     <link rel="stylesheet" href="StyleSheets/NavbarStyle.css" />
-    <link rel="stylesheet" href="StyleSheets/LoginStyle.css" />
+    
 </head>
 
 <body>
@@ -40,7 +40,9 @@
     </div>
 
     <!-- Headline -->
-    <h1>Auf dieser Seite wird das Spiel spielbar sein</h1>
+    <Center><h1>Kniffel, ein Klassiker neu aufgelget</h1></Center>
+
+
 
     <!-- Würfel anzeige-->
     <div class="Dices">
@@ -52,19 +54,12 @@
     </div>
 
     <!-- Knopf zum Wüfeln-->
-    <center><button id="würfle" onclick="rollDice5()"> Würfle </button></center>
+    <center><button id="würfle" class="würfle" onclick="rollDice5()"> Würfle </button></center>
 
-    <!--  wahrscheinlich nicht benötigt
-    <p id="ergebnis1">0</p>
-    <p id="ergebnis2">0</p>
-    <p id="ergebnis3">0</p>
-    <p id="ergebnis4">0</p>
-    <p id="ergebnis5">0</p>
-        -->
 
-    <!-- Block, 
-        erstes td = name der kombi mit onclick funktion zum punkte berechenen
-        zweites td = speicher der Punkte 
+    <!-- Block,
+        erstes td = name der kombi mit onclick funktion zum punkte berechnen
+        zweites td = speicher der Punkte
         -->
     <table id="rheihe">
         <caption>Block</caption>
@@ -182,8 +177,16 @@
             return x;
         }
 
+        function Sleep(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+        }
+
         // führt rollDice() 5 mal aus , speichert die ergebnisse, führt diceSide() aus
-        function rollDice5() {
+        async function rollDice5() {
+            //document.getElementsById("Dice1").style.animationPlayState = 'Running';
+            togglePlayState('Running');
+            await Sleep(500);
+            togglePlayState('Paused');
             if (würfelzähler > 0) {
                 for (let i = 0; i < 5; i++) {
                     //überprüft ob der würfel gewählt ist
@@ -193,7 +196,7 @@
 
                         diceSide(die[i], würfelWert[i]);
                     }
-                    
+
 
                 }
                 //reduziert würfelzähler um 1(wie oft man noch würfeln kann)
@@ -201,8 +204,16 @@
                 //setzt punkte gesetzt auf false(die würfeln dürfen nur einmal als punkte eingetragen werden, dannach muss neu gewürfelt werden)
                 punkteGesetzt = false;
             }
-            
-            
+
+
+        }
+
+        function togglePlayState(newState) {
+            document.getElementById("Dice1").style.animationPlayState = newState;
+            document.getElementById("Dice2").style.animationPlayState = newState;
+            document.getElementById("Dice3").style.animationPlayState = newState;
+            document.getElementById("Dice4").style.animationPlayState = newState;
+            document.getElementById("Dice5").style.animationPlayState = newState;
         }
 
         //kriegt würfel und wert, ändert würfelbild passend zum wert
@@ -210,7 +221,7 @@
 
             switch (Value) {
                 //ändert das Bild das beu der Id Dice hinterlegt ist in abhängigkeit von value
-                case 1:                
+                case 1:
                     document.getElementById(Dice).src = "Bilder/Würfelseiten/1eyed.jpg";
                     break;
                 case 2:
@@ -247,7 +258,7 @@
                 //wählt ihn
                 würfelGewählt[ind] = true;
 
-            //ansonnsten
+                //ansonnsten
             } else {
                 //macht ihn wieder undurchsichtig
                 document.getElementById(sender.id).style.opacity = 1;
@@ -255,10 +266,10 @@
                 würfelGewählt[ind] = false;
 
             }
-            
-            
 
-  
+
+
+
         }
 
         function addiereBestimmteWürfel(Wert) {
@@ -276,8 +287,8 @@
             var punkte = 0;
 
             for (let i = 0; i < 5; i++) {
-                    punkte = punkte + würfelWert[i];
-                
+                punkte = punkte + würfelWert[i];
+
             }
             return punkte;
         }
@@ -314,7 +325,7 @@
                 punkteGesetzt = true;
 
             }
-            
+
         }
 
         //methode kriegt eine id und punkte und trägt die punkte dann in die passende spalte ein
@@ -323,7 +334,7 @@
             punkteOben[pIndex - 1] = punkte;
 
             summeObenBerechnen();
-            
+
             if (punkteOben[7] >= 63) {
                 punkteOben[8] = 35;
                 document.getElementById("bonusPunkte").innerHTML = punkteOben[8];

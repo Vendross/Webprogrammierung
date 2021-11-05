@@ -45,7 +45,13 @@
     <!-- Sidenav -->
     <div class="sidenav">
         <div class="profile">
-            <img src="Bilder/blank.png" alt="" width="100" height="100">
+            <img id ="profilpic "src="Bilder/blank.png" alt="" width="100" height="100">
+            <form method="post" enctype="multipart/form-data">
+                <label>       
+                    <input name="datei" type="file" size="50" accept="image/*">
+                    
+                </label>
+            </form>
 
             <div class="name">
                 Xxx_KniffelSpieler_xxX
@@ -57,11 +63,11 @@
 
         <div class="sidenav-url">
             <div class="url">
-                <a href="Profil.html" class="active">Profil</a>
+                <a href="Profil.html" >Profil</a>
                 <hr align="center">
             </div>
             <div class="url">
-                <a href="Profil bearbeitet.html">Bearbeiten</a>
+                <a href="#settings" class="active" >Bearbeiten</a>
                 <hr align="center">
             </div>
         </div>
@@ -69,44 +75,17 @@
     <!-- End -->
     <!-- Main -->
     <div class="main">
-        <h2>Profil</h2>
+        <h2>Angaben Ändern</h2>
         <div class="card">
             <div class="card-body">
-               
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Xxx_KniffelSpieler_xxX</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td>Xxx_KniffelSpieler_xxX@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>Spiele gewonnen</td>
-                            <td>:</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>Höhster Punktestand</td>
-                            <td>:</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Rank</td>
-                            <td>:</td>
-                            <td>Großmeister</td>
-                        </tr>
-                        <tr>
-                            <td>Siegen bis zum nächsten Rank nötig</td>
-                            <td>:</td>
-                            <td>2</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Inputs zum ändern der Angaben, beim speichern kommt fehler da kein PHP vorhanden -->
+                <form action="/action_page.php">
+                    <label for="fname">Name:</label>
+                    <input type="text" id="fname" name="fname"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email"><br><br>
+                    <input id ="änderung" type="submit" value="Änderungen speichern">
+                </form>
             </div>
         </div>
 
