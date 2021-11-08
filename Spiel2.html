@@ -15,7 +15,7 @@
     <!--Naviagtionsleiste oben-->
     <div class="navbar">
         <a href="Index.html">Startseite</a>
-        <a class="active" href="Spiel.html">Spiel</a>
+        <a class="active" href="Spiel2.html">Spiel</a>
         <div class="dropdown">
             <button class="dropbtn">
                 Optionen
@@ -53,11 +53,14 @@
         <img class="Dice" id="Dice3" src="Bilder/Würfelseiten/1eyed.jpg" onclick="auswählen(this)">
         <img class="Dice" id="Dice4" src="Bilder/Würfelseiten/1eyed.jpg" onclick="auswählen(this)">
         <img class="Dice" id="Dice5" src="Bilder/Würfelseiten/1eyed.jpg" onclick="auswählen(this)">
+
     </div>
 
     <!-- Knopf zum Wüfeln-->
     <center><button id="würfle" class="login4" onclick="rollDice5()"> Würfle </button></center>
-
+    <center><button id="würfle" class="login4" onclick="nextPlayer()"> Nächster Spieler </button></center>
+    <p align="right">Aktuell am Zug:</p>
+    <p align="right" id="player">1</p>
 
     <!-- Block,
         erstes td = name der kombi mit onclick funktion zum punkte berechnen
@@ -68,85 +71,104 @@
         <tr>
             <th>Kombi</th>
             <th>Spieler 1</th>
+            <th>Spieler 2</th>
         </tr>
         <tr>
             <td onclick="obererBlock(1)">Einser</td>
             <td id="einserPunkte" onclick="obererBlock(1)"></td>
+            <td id="einserPunkte2" onclick="obererBlock(1)"></td>
         </tr>
         <tr>
             <td onclick="obererBlock(2)">Zweier</td>
             <td id="zweierPunkte" onclick="obererBlock(2)"></td>
+            <td id="zweierPunkte2" onclick="obererBlock(2)"></td>
         </tr>
         <tr>
             <td onclick="obererBlock(3)">Dreier</td>
             <td id="dreierPunkte" onclick="obererBlock(3)"></td>
+            <td id="dreierPunkte2" onclick="obererBlock(3)"></td>
         </tr>
         <tr>
             <td onclick="obererBlock(4)">Vierer</td>
             <td id="viererPunkte" onclick="obererBlock(4)"></td>
+            <td id="viererPunkte2" onclick="obererBlock(4)"></td>
         </tr>
         <tr>
             <td onclick="obererBlock(5)">Fünfer</td>
             <td id="fünferPunkte" onclick="obererBlock(5)"></td>
+            <td id="fünferPunkte2" onclick="obererBlock(5)"></td>
         </tr>
         <tr>
             <td onclick="obererBlock(6)">Sechser</td>
             <td id="sechserPunkte" onclick="obererBlock(6)"></td>
+            <td id="sechserPunkte2" onclick="obererBlock(6)"></td>
         </tr>
         <tr>
             <td>Summe oben</td>
             <td id="summePunkte"></td>
+            <td id="summePunkte2"></td>
         </tr>
         <tr>
             <td>Bonus</td>
             <td id="bonusPunkte"></td>
+            <td id="bonusPunkte2"></td>
         </tr>
         <tr>
             <td>Oben Gesammt</td>
             <td id="obenGesammtPunkte"></td>
+            <td id="obenGesammtPunkte2"></td>
         </tr>
         <tr>
             <td onclick="pasch(3)">Dreierpasch</td>
             <td id="dreierpaschPunkte"></td>
+            <td id="dreierpaschPunkte2"></td>
         </tr>
         <tr>
             <td onclick="pasch(4)">Viererpasch</td>
             <td id="viererpaschPunkte"></td>
+            <td id="viererpaschPunkte2"></td>
         </tr>
         <tr>
             <td onclick=" fullHouse()">Fullhouse</td>
             <td id="fullhousePunkte"></td>
+            <td id="fullhousePunkte2"></td>
         </tr>
         <tr>
             <td onclick="kleineStraße()">Kleine Straße</td>
             <td id="kleineStraßePunkte"></td>
+            <td id="kleineStraßePunkte2"></td>
         </tr>
         <tr>
             <td onclick="großeStraße()">Große Straße</td>
             <td id="großeStraßePunkte"></td>
+            <td id="großeStraßePunkte2"></td>
         </tr>
         <tr>
             <td onclick="pasch(5)">Kniffel</td>
             <td id="knifflePunkte"></td>
+            <td id="knifflePunkte2"></td>
         </tr>
         <tr>
             <td onclick="chance()">Chance</td>
             <td id="chancePunkte"></td>
+            <td id="chancePunkte2"></td>
         </tr>
         <tr>
             <td>Summe unten</td>
             <td id="summeUntenPunkte"></td>
+            <td id="summeUntenPunkte2"></td>
         </tr>
         <tr>
             <td>Summe Gesamt</td>
             <td id="summeGesamtPunkte"></td>
+            <td id="summeGesamtPunkte2"></td>
         </tr>
     </table>
 
 
 
     <script>
-
+        var zugspieler = 1;
         var würfelWert = [1, 1, 1, 1, 1];
 
         //var punkteOben = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -297,33 +319,65 @@
         //methode kriegt einen wert, zählt alle würfel mit dem wert zusammen
         //trägt diese dann in die richtige spalte ein
         function obererBlock(Wert) {
-            if (punkteGesetzt == false) {
+            if (zugspieler == 1) {
+                if (punkteGesetzt == false) {
 
-                var punkte = addiereBestimmteWürfel(Wert);
+                    var punkte = addiereBestimmteWürfel(Wert);
 
-                //trägt abhängig vom Wert die punkte in eine Spalte ein
-                switch (Wert) {
-                    case 1:
-                        tragePunkteEin("einserPunkte", punkte, Wert);
-                        break;
-                    case 2:
-                        tragePunkteEin("zweierPunkte", punkte, Wert);
-                        break;
-                    case 3:
-                        tragePunkteEin("dreierPunkte", punkte, Wert);
-                        break;
-                    case 4:
-                        tragePunkteEin("viererPunkte", punkte, Wert);
-                        break;
-                    case 5:
-                        tragePunkteEin("fünferPunkte", punkte, Wert);
-                        break;
-                    case 6:
-                        tragePunkteEin("sechserPunkte", punkte, Wert);
-                        break;
+                    //trägt abhängig vom Wert die punkte in eine Spalte ein
+                    switch (Wert) {
+                        case 1:
+                            tragePunkteEin("einserPunkte", punkte, Wert);
+                            break;
+                        case 2:
+                            tragePunkteEin("zweierPunkte", punkte, Wert);
+                            break;
+                        case 3:
+                            tragePunkteEin("dreierPunkte", punkte, Wert);
+                            break;
+                        case 4:
+                            tragePunkteEin("viererPunkte", punkte, Wert);
+                            break;
+                        case 5:
+                            tragePunkteEin("fünferPunkte", punkte, Wert);
+                            break;
+                        case 6:
+                            tragePunkteEin("sechserPunkte", punkte, Wert);
+                            break;
+                    }
+
+
                 }
-                
+            }
+            if (zugspieler == 2) {
+                if (punkteGesetzt == false) {
 
+                    var punkte = addiereBestimmteWürfel(Wert);
+
+                    //trägt abhängig vom Wert die punkte in eine Spalte ein
+                    switch (Wert) {
+                        case 1:
+                            tragePunkteEin("einserPunkte2", punkte, Wert);
+                            break;
+                        case 2:
+                            tragePunkteEin("zweierPunkte2", punkte, Wert);
+                            break;
+                        case 3:
+                            tragePunkteEin("dreierPunkte2", punkte, Wert);
+                            break;
+                        case 4:
+                            tragePunkteEin("viererPunkte2", punkte, Wert);
+                            break;
+                        case 5:
+                            tragePunkteEin("fünferPunkte2", punkte, Wert);
+                            break;
+                        case 6:
+                            tragePunkteEin("sechserPunkte2", punkte, Wert);
+                            break;
+                    }
+
+
+                }
             }
 
         }
@@ -351,7 +405,7 @@
         }
 
         function bonusBerechnen() {
-            
+
             for (let i = 0; i < 6; i++) {
                 var bonusMöglich = false;
                 if (punkteOben[i] == -1) {
@@ -366,7 +420,7 @@
             } else {
                 punkteOben[8] = 0;
                 document.getElementById("bonusPunkte").innerHTML = punkteOben[8];
-                
+
             }
             if (punkteOben[8] != -1) {
                 punkteOben[9] = punkteOben[7] + punkteOben[8];
@@ -391,7 +445,7 @@
                 if (punkteOben[i] != -1) {
                     punkteSumme = punkteSumme + punkteOben[i];
                 }
-                
+
             }
             punkteOben[17] = punkteSumme;
             document.getElementById("summeUntenPunkte").innerHTML = punkteSumme;
@@ -399,8 +453,8 @@
         //addiert summeoben,bonus und summe unten zusammen
         function summeGesamtBerechnen() {
             var punkteSumme = punkteOben[7] + punkteOben[8] + punkteOben[17];
-            if (punkteOben[8] == -1) { punkteSumme = punkteSumme + 1}
-                
+            if (punkteOben[8] == -1) { punkteSumme = punkteSumme + 1 }
+
             punkteOben[18] = punkteSumme;
             document.getElementById("summeGesamtPunkte").innerHTML = punkteSumme;
         }
@@ -408,34 +462,67 @@
         //function zum eintragen des 3pasch,4pasch und 5pasch(kniffel)
         function pasch(anzahl) {
             var kombi = kombination();
+            if (zugspieler == 1) {
+                for (let i = 0; i < 6; i++) {
+                    if (kombi[i] >= anzahl) {
+                        switch (anzahl) {
+                            case 3:
+                                tragePunkteEin("dreierpaschPunkte", addiereWürfel(), 10);
+                                break;
+                            case 4:
+                                tragePunkteEin("viererpaschPunkte", addiereWürfel(), 11);
+                                break;
+                            case 5:
+                                tragePunkteEin("knifflePunkte", 50, 15);
+                                break;
 
-            for (let i = 0; i < 6; i++) {
-                if (kombi[i] >= anzahl) {
-                    switch (anzahl) {
-                        case 3:
-                            tragePunkteEin("dreierpaschPunkte", addiereWürfel(), 10);
-                            break;
-                        case 4:
-                            tragePunkteEin("viererpaschPunkte", addiereWürfel(), 11);
-                            break;
-                        case 5:
-                            tragePunkteEin("knifflePunkte", 50, 15);
-                            break;
+                        }
 
+                    } else {
+                        switch (anzahl) {
+                            case 3:
+                                tragePunkteEin("dreierpaschPunkte", 0, 10);
+                                break;
+                            case 4:
+                                tragePunkteEin("viererpaschPunkte", 0, 11);
+                                break;
+                            case 5:
+                                tragePunkteEin("knifflePunkte", 0, 15);
+                                break;
+
+                        }
                     }
+                }
+            }
+            if (zugspieler == 2) {
+                for (let i = 0; i < 6; i++) {
+                    if (kombi[i] >= anzahl) {
+                        switch (anzahl) {
+                            case 3:
+                                tragePunkteEin("dreierpaschPunkte2", addiereWürfel(), 10);
+                                break;
+                            case 4:
+                                tragePunkteEin("viererpaschPunkte2", addiereWürfel(), 11);
+                                break;
+                            case 5:
+                                tragePunkteEin("knifflePunkte2", 50, 15);
+                                break;
 
-                } else {
-                    switch (anzahl) {
-                        case 3:
-                            tragePunkteEin("dreierpaschPunkte", 0, 10);
-                            break;
-                        case 4:
-                            tragePunkteEin("viererpaschPunkte", 0, 11);
-                            break;
-                        case 5:
-                            tragePunkteEin("knifflePunkte", 0, 15);
-                            break;
+                        }
 
+                    } else {
+                        switch (anzahl) {
+                            case 3:
+                                tragePunkteEin("dreierpaschPunkte2", 0, 10);
+                                break;
+                            case 4:
+                                tragePunkteEin("viererpaschPunkte2", 0, 11);
+                                break;
+                            case 5:
+                                tragePunkteEin("knifflePunkte2", 0, 15);
+                                break;
+
+                        }
                     }
                 }
             }
@@ -513,6 +600,18 @@
                 }
             }
             return fertig;
+        }
+
+        function nextPlayer() {
+            if (zugspieler == 1) {
+                zugspieler = 2;
+            } else {
+                if (zugspieler == 2) {
+                    zugspieler = 1;
+                }
+            }
+            document.getElementById("player").innerHTML = zugspieler;
+
         }
     </script>
 </body>

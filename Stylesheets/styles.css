@@ -1,10 +1,13 @@
 body {
     margin: 0;
+    border-left: 10px;
+    border-left-width: thin;
 }
 
-
-
-
+p {
+    margin-left: 10px;
+    font-family: 'Fira Sans', sans-serif;
+}
 /*Tabelle auf der Spieleseite*/
 #rheihe {
     font-family: Arial, Helvetica, sans-serif;
@@ -41,7 +44,16 @@ body {
 /* schriftart aller headlines*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
+    margin-left: 10px;
+    text-align: center;
 }
+
+h3 {
+    font-family: 'Fira Sans', sans-serif;
+    margin-left: 10px;
+    text-align: center;
+}
+
 
 /*größe und anordnung der Würfel */
 .Dice {
@@ -202,7 +214,7 @@ span.psw {
     position: absolute;
     right: 25px;
     top: 0;
-    color: #000;
+    color: white;
     font-size: 35px;
     font-weight: bold;
 }
@@ -250,6 +262,29 @@ span.psw {
     width: 100%;
 }
 
+.login4 {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    box-shadow: 0 9px #999;
+}
+/*wenn man über den button hovert*/
+.login4:hover {
+    background-color: #666;
+}
+/*wenn man auf den button klickt*/
+.login4:active {
+    background-color: #333;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 /*Formatierung der Rankingliste in Optionen.html*/
 .container {
     max-width: 1000px;
@@ -263,6 +298,7 @@ h2 {
     font-size: 26px;
     margin: 20px 0;
     text-align: center;
+    font-family: 'Fira Sans', sans-serif;
 }
 
     h2 small {
@@ -278,7 +314,8 @@ h2 {
 }
 
 .responsive-table .table-header {
-    background-color: #95a5a6;
+    background-color: #333;
+    color: white;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -291,18 +328,22 @@ h2 {
 
 .responsive-table .col-1 {
     flex-basis: 10%;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .responsive-table .col-2 {
     flex-basis: 40%;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .responsive-table .col-3 {
     flex-basis: 25%;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .responsive-table .col-4 {
     flex-basis: 25%;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 @media all and (max-width: 767px) {

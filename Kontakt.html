@@ -3,11 +3,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Optionen</title>
+    <title>Kontaktformular</title>
     <link rel="stylesheet" href="StyleSheets/styles.css" />
     <link rel="stylesheet" href="StyleSheets/NavbarStyle.css" />
-    <link rel="stylesheet" href="StyleSheets/LoginStyle.css" />
-    <style>        * {
+
+    <link rel="icon" href="Bilder/kniflle.jpg">
+
+    <style>
+        * {
             box-sizing: border-box;
         }
 
@@ -22,7 +25,7 @@
         }
 
         input[type=submit] {
-            background-color: #04AA6D;
+            background-color: #333;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -98,28 +101,29 @@
 
     <div class="container">
         <div style="text-align:center">
-            <h2>Contact Us</h2>
-            <p>Swing by for a cup of coffee, or leave us a message:</p>
+            <h2>Kontaktier uns</h2>
+            <p>Für Fragen und Verbesserungsvorschläge kannst du uns gerne hierrüber erreichen </p>
         </div>
         <div class="row">
             <div class="column">
-                <img src="/w3images/map.jpg" style="width:100%">
+                <img src="Bilder/kniflle.jpg" style="width:100%">
             </div>
             <div class="column">
                 <form action="/action_page.php">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                    <label for="country">Country</label>
+                    <label for="fname">Vorname</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Dein Vorname..">
+                    <label for="lname">Nachname</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Dein Nachname..">
+                    <label for="country">Land</label>
                     <select id="country" name="country">
-                        <option value="australia">Australia</option>
-                        <option value="canada">Canada</option>
+                        <option value="australia">Australien</option>
+                        <option value="australia">Deutschland</option>
+                        <option value="canada">Kanada</option>
                         <option value="usa">USA</option>
                     </select>
-                    <label for="subject">Subject</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-                    <input type="submit" value="Submit">
+                    <label for="subject">Betreff</label>
+                    <textarea id="subject" name="subject" placeholder="Schreib hier etwas.." style="height:170px"></textarea>
+                    <input type="submit" value="Abschicken">
                 </form>
             </div>
         </div>

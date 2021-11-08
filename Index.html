@@ -53,25 +53,22 @@
 
         <!-- Modal Content -->
         <form class="modal-content animate" action="/action_page.php">
-            <div class="imgcontainer">
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
 
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="uname"><b>Nutzername</b></label>
+                <input type="text" placeholder="Nutzername eingeben" name="uname" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="psw"><b>Passwort</b></label>
+                <input type="password" placeholder="Passwort eingeben" name="psw" required>
 
                 <button class="login2" type="submit" onclick="window.location.href = 'Profil.html';">Login</button>
                 <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                    <input type="checkbox" checked="checked" name="remember"> Daten speichern
                 </label>
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Abrechen</button>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Abbrechen</button>
                 <span class="psw"> <a href="Passwort.html"> Passwort vergessen?</a></span>
             </div>
         </form>
@@ -91,15 +88,13 @@
     <div id="id02" class="modal">
         <span onclick="document.getElementById('id02').style.display='none'"
               class="close" title="Close Modal">&times;</span>
-
-        <button class="login2" onclick="window.location.href = 'Spiel.html';">1 Spieler </button>
-
-      
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Abrechen</button>
-
-            </div>
+        <div class="spielerbuttons">
+            <button class="login3" onclick="window.location.href = 'Spiel.html';">1 Spieler </button>
+            <button class="login3" onclick="window.location.href = 'Spiel2.html';">2 Spieler </button>
+            <button class="login3" onclick="window.location.href = 'Spiel.html';">3 Spieler </button>
+            <button class="login3" onclick="window.location.href = 'Spiel.html';">4 Spieler </button>
+        </div>
+       
     </div>
 
 
@@ -111,7 +106,7 @@
             Wir nutzen Cookies, um unsere Dienste zu erbringen und zu verbessern. Mit Nutzung dieser Seite akzeptieren Sie Cookies. <a href="Datenschutz.html">Mehr erfahren</a>
         </span>
         <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Akzeptieren</a></span>
-        <span id="accept"><a href="javascript:void(0)" title="Akzeptieren">Weitere Optionen</a></span>
+        <span id="accept"><a href="Datenschutz.html" title="Akzeptieren">Weitere Optionen</a></span>
     </div>
 
     <!--Fußzeile mit social media
@@ -146,10 +141,7 @@
         }
 
         footerCookieAccept.onclick = function (e) {
-            var cookieDate = new Date();
-            cookieDate.setTime(new Date().getTime() + 31104000000);
-
-            document.cookie = "dakitecCookieBanner = 1; path=/; secure; expires=" + cookieDate.toUTCString();
+          
 
             footerCookie.style.display = "none";
         };

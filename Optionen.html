@@ -3,9 +3,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Optionen</title>
+    <title>Ranking</title>
     <link rel="stylesheet" href="StyleSheets/styles.css" />
     <link rel="stylesheet" href="StyleSheets/NavbarStyle.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="icon" href="Bilder/kniflle.jpg">
 
 </head>
 <body>
@@ -40,13 +45,12 @@
     </div>
 
     <!-- Headline -->
-    <h1>Kniffel, ein Klassiker neu aufgelegt äöü </h1>
-   
-    <input type="file" name="test.txt" id="file">
+    <h1>Die Rangliste</h1>
+
     <!--Ranking Liste-->
     <div class="container">
         <!--Überschrifft-->
-        <h2>Highscores<small>...</small></h2>
+        <h2>Punktezahl</h2>
         <ul class="responsive-table">
             <!--Oberste Reihe-->
             <li class="table-header">
@@ -59,27 +63,22 @@
             <li class="table-row">
                 <div class="col col-1" data-label="Job Id">1.</div>
                 <div class="col col-2" data-label="Customer Name">John Doe</div>
-                <div class="col col-3" data-label="Amount">63</div>
+                <div class="col col-3" data-label="Amount">125</div>
                 <div class="col col-4" data-label="Payment Status">06.10.2021</div>
             </li>
             <li class="table-row">
-                <div class="col col-1" data-label="Job Id">42442</div>
-                <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
-                <div class="col col-3" data-label="Amount">$220</div>
-                <div class="col col-4" data-label="Payment Status">Pending</div>
+                <div class="col col-1" data-label="Job Id">2.</div>
+                <div class="col col-2" data-label="Customer Name">Xxx_Kniffelspieler_xxX</div>
+                <div class="col col-3" data-label="Amount">63</div>
+                <div class="col col-4" data-label="Payment Status">7.11.2021</div>
             </li>
             <li class="table-row">
-                <div class="col col-1" data-label="Job Id">42257</div>
-                <div class="col col-2" data-label="Customer Name">John Smith</div>
-                <div class="col col-3" data-label="Amount">$341</div>
-                <div class="col col-4" data-label="Payment Status">Pending</div>
+                <div class="col col-1" data-label="Job Id">3.</div>
+                <div class="col col-2" data-label="Customer Name">Mark2002</div>
+                <div class="col col-3" data-label="Amount">30</div>
+                <div class="col col-4" data-label="Payment Status">24.10.2021</div>
             </li>
-            <li class="table-row">
-                <div class="col col-1" data-label="Job Id">42311</div>
-                <div class="col col-2" data-label="Customer Name">John Carpenter</div>
-                <div class="col col-3" data-label="Amount">$115</div>
-                <div class="col col-4" data-label="Payment Status">Pending</div>
-            </li>
+           
         </ul>
     </div>
 
@@ -87,23 +86,3 @@
 
 
 </html>
-
-<script>
-        document.getElementById('file').onchange = function () {
-
-            var file = this.files[0];
-
-            var reader = new FileReader();
-            reader.onload = function (progressEvent) {
-                // Entire file
-                console.log(this.result);
-
-                // By lines
-                var lines = this.result.split('\n');
-                for (var line = 0; line < lines.length; line++) {
-                    console.log(lines[line]);
-                }
-            };
-            reader.readAsText(file);
-        };
-</script>
